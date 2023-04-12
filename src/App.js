@@ -27,7 +27,6 @@ const nonceAuthKP = Keypair.fromSecretKey(
     47,226,52,255,251,111,202,104,182,238,46,220,116,178,47,197
   ])
 );
-const nonceAuthPubkey = nonceAuthKP.publicKey;
 
 const Context = ({ children }) => {
   const network = WalletAdapterNetwork.Mainnet;
@@ -72,7 +71,7 @@ const Content = () => {
       })
 
       const advanceIX = SystemProgram.nonceAdvance({
-          authorizedPubkey: nonceAuthPubkey,
+          authorizedPubkey: nonceAuthKP.publicKey,
           noncePubkey: noncePubKey
       })
 
@@ -83,7 +82,7 @@ const Content = () => {
       tx.recentBlockhash = nonceAccount.nonce;
       tx.feePayer = publicKey;
       
-      tx.sign(nonceAuthPubkey);
+      tx.sign(nonceAuthKP);
       const signedtx = await signTransaction(tx);
       
       console.log(bs58.encode(signedtx.serialize({requireAllSignatures: false})));
