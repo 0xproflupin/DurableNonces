@@ -31,7 +31,7 @@ const nonceAuthKP = Keypair.fromSecretKey(
 const Context = ({ children }) => {
   const network = WalletAdapterNetwork.Mainnet;
 
-  const endpoint = "https://rpc.helius.xyz/?api-key=3f2b539a-fef1-4271-8836-c578507b739b";
+  const endpoint = "https://rpc.helius.xyz/?api-key=402f3e20-991a-4e36-9e2b-5f3d375aaec0";
 
   const wallets = useMemo(
     () => [new PhantomWalletAdapter()], // confirmed also with `() => []` for wallet-standard only
